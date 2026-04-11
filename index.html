@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>단위 변환기 — 길이, 무게, 온도, 부피 변환 | JWAY</title>
+<meta name="description" content="단위 변환기 무료 온라인 도구. cm↔인치, kg↔파운드, 섭씨↔화씨 등 길이, 무게, 온도, 부피, 넓이 단위를 한번에 변환합니다.">
+<meta name="keywords" content="단위 변환기, 인치 cm, 파운드 kg, 섭씨 화씨, 단위 계산기, 해외직구 단위, ft m 변환">
+<meta property="og:title" content="단위 변환기 — 길이·무게·온도·부피·넓이 | JWAY">
+<meta property="og:description" content="cm↔inch, kg↔lb, °C↔°F 등 모든 단위를 한 번에 변환합니다.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://jaewoo0317.github.io/unit-converter/">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F0F7F9;--surface:#FFF;--surface-alt:#E0EEF1;--text-primary:#0F2430;--text-secondary:#4A6573;--text-tertiary:#8FA5AE;--accent:#0891B2;--accent-light:#CFFAFE;--accent-hover:#0E7490;--border:#D5E3E8;--shadow-md:0 4px 16px rgba(0,0,0,.06);--radius:14px;--radius-sm:10px}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;line-height:1.7;-webkit-font-smoothing:antialiased}
+.nav{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;position:sticky;top:0;z-index:100}.nav-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}.nav-logo{font-size:18px;font-weight:700;color:var(--text-primary);text-decoration:none}.nav-logo span{color:var(--accent)}.nav-links{display:flex;gap:14px;flex-wrap:wrap}.nav-links a{font-size:13px;color:var(--text-secondary);text-decoration:none;font-weight:500}.nav-links a:hover{color:var(--accent)}
+.header{text-align:center;padding:48px 20px 0}.header h1{font-size:clamp(28px,5vw,40px);font-weight:700;letter-spacing:-1.5px}.header h1 em{color:var(--accent);font-style:normal}.header p{font-size:15px;color:var(--text-secondary);max-width:480px;margin:8px auto 0}
+.container{max-width:760px;margin:32px auto;padding:0 20px 20px}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:20px}
+.tab-btn{padding:12px 4px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;transition:all .25s;text-align:center}.tab-btn:hover{border-color:var(--accent);color:var(--accent)}.tab-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+@media(max-width:480px){.tabs{grid-template-columns:repeat(3,1fr)}}
+.calc-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:28px 24px}
+.input-row{display:flex;gap:10px;align-items:stretch}
+input[type="number"]{padding:14px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--text-primary);outline:none;background:var(--surface);flex:1;min-width:0;text-align:right}input[type="number"]:focus{border-color:var(--accent)}
+select{padding:14px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'Noto Sans KR',sans-serif;font-size:15px;color:var(--text-primary);outline:none;background:var(--surface);cursor:pointer;min-width:130px}select:focus{border-color:var(--accent)}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}@media(min-width:520px){.result-grid{grid-template-columns:1fr 1fr 1fr}}
+.result-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;transition:all .2s}
+.result-card.highlight{border-color:var(--accent);background:var(--accent-light)}
+.result-unit{font-size:12px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.result-num{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:600;color:var(--text-primary);word-break:break-all}
+.result-card.highlight .result-num{color:var(--accent)}
+.guide-section{margin-top:40px}.guide-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:32px 28px}.guide-card h2{font-size:20px;font-weight:700;margin:28px 0 12px}.guide-card h2:first-child{margin-top:0}.guide-card h3{font-size:16px;font-weight:700;margin:20px 0 8px}.guide-card p{font-size:14px;color:var(--text-secondary);line-height:1.9;margin-bottom:12px}.guide-card p:last-child{margin-bottom:0}
+.guide-table{width:100%;border-collapse:collapse;margin:16px 0}.guide-table th,.guide-table td{padding:10px 14px;font-size:14px;border-bottom:1px solid var(--surface-alt);text-align:left}.guide-table th{font-weight:600;background:var(--surface-alt)}.guide-table td{color:var(--text-secondary)}
+.guide-tip{background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0;font-size:14px;color:var(--text-secondary);line-height:1.8}.guide-tip strong{color:var(--text-primary)}
+.faq-section{margin-top:32px}.section-title{font-size:20px;font-weight:700;letter-spacing:-.8px;margin-bottom:16px}.faq-item{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden}.faq-q{padding:16px 20px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}.faq-q:hover{background:var(--surface-alt)}.faq-arrow{font-size:12px;color:var(--text-tertiary);transition:transform .3s}.faq-item.open .faq-arrow{transform:rotate(180deg)}.faq-a{max-height:0;overflow:hidden;transition:max-height .3s}.faq-a-inner{padding:0 20px 16px;font-size:14px;color:var(--text-secondary);line-height:1.8}.faq-item.open .faq-a{max-height:500px}
+.other-tools{margin-top:40px}.other-grid{display:grid;grid-template-columns:1fr;gap:10px}@media(min-width:520px){.other-grid{grid-template-columns:1fr 1fr 1fr}}.other-card{display:flex;align-items:center;gap:14px;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--text-primary);transition:all .2s}.other-card:hover{border-color:var(--accent);transform:translateY(-2px)}.other-icon{font-size:24px}.other-name{font-size:15px;font-weight:600;margin-bottom:2px}.other-desc{font-size:12px;color:var(--text-secondary)}
+.ad-banner{border:1.5px dashed var(--border);border-radius:var(--radius-sm);padding:10px;text-align:center;margin-top:32px}
+.footer{margin-top:48px;background:var(--surface);border-top:1px solid var(--border);padding:32px 20px 20px}.footer-inner{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px}.footer-col{display:flex;flex-direction:column;gap:6px}.footer-col p{font-size:13px;color:var(--text-secondary);max-width:240px;line-height:1.6}.footer-col a{font-size:13px;color:var(--text-secondary);text-decoration:none}.footer-col a:hover{color:var(--accent)}.footer-logo{font-size:18px;font-weight:700;color:var(--text-primary);text-decoration:none;margin-bottom:6px}.footer-logo span{color:var(--accent)}.footer-bottom{max-width:760px;margin:16px auto 0;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--text-tertiary);text-align:center}
+@media(max-width:480px){.header{padding:32px 16px 0}.container{padding:0 12px 16px}.calc-card,.guide-card{padding:20px 16px}.nav-links{gap:10px}.nav-links a{font-size:12px}.input-row{flex-direction:column}}
+</style></head><body>
+<nav class="nav"><div class="nav-inner"><a href="https://jaewoo0317.github.io/" class="nav-logo">J<span>WAY</span></a><div class="nav-links"><a href="https://jaewoo0317.github.io/char-counter/">글자수</a><a href="https://jaewoo0317.github.io/date-calculator/">날짜</a><a href="https://jaewoo0317.github.io/percent-calculator/">퍼센트</a><a href="https://jaewoo0317.github.io/salary-calculator/">연봉</a><a href="https://jaewoo0317.github.io/bmi-calculator/">BMI</a><a href="https://jaewoo0317.github.io/exchange-rate/">환율</a><a href="https://jaewoo0317.github.io/unit-converter/">단위</a></div></div></nav>
+<header class="header"><h1>단위 <em>변환기</em></h1><p>길이·무게·온도·부피·넓이 단위를 한 번에 변환합니다. 해외직구·요리·공부·여행에 활용하세요.</p></header>
+<main class="container">
+<div class="tabs">
+<button class="tab-btn active" data-cat="length" onclick="switchCat('length')">📏 길이</button>
+<button class="tab-btn" data-cat="weight" onclick="switchCat('weight')">⚖️ 무게</button>
+<button class="tab-btn" data-cat="temp" onclick="switchCat('temp')">🌡️ 온도</button>
+<button class="tab-btn" data-cat="volume" onclick="switchCat('volume')">🥤 부피</button>
+<button class="tab-btn" data-cat="area" onclick="switchCat('area')">📐 넓이</button>
+</div>
+<div class="calc-card">
+<div class="input-row">
+<input type="number" id="inputValue" value="1" step="any">
+<select id="fromUnit"></select>
+</div>
+<div class="result-grid" id="resultGrid"></div>
+</div>
+
+<div class="guide-section"><div class="guide-card">
+<h2>단위 변환이 필요한 경우</h2>
+<p>일상 생활에서 단위 변환이 필요한 순간은 생각보다 자주 찾아옵니다. 해외 온라인 쇼핑몰에서 옷을 살 때 사이즈가 인치(inch)로 표시되어 있거나, 해외 레시피를 따라 요리할 때 파운드(lb)·온스(oz)·화씨(°F)로 쓰여 있어 당황한 경험이 있을 것입니다. 여행 중 도로 표지판이 마일(mile)로 되어 있거나, 부동산 매물이 평(坪)으로 표기될 때도 정확한 환산이 필요합니다.</p>
+<p>이 단위 변환기는 길이·무게·온도·부피·넓이 5개 카테고리의 주요 단위를 한 번의 입력으로 모든 단위로 동시에 변환해줍니다. 탭을 선택하고 숫자를 입력하면 같은 카테고리 내 모든 단위가 즉시 업데이트되므로, "1 m = 몇 인치 = 몇 피트?" 같은 다중 변환도 한 화면에서 처리됩니다.</p>
+
+<h2>미터법 vs 야드파운드법</h2>
+<p>전 세계는 크게 두 가지 단위 체계를 사용합니다. 대부분의 나라가 사용하는 "미터법(Metric System)"은 m·kg·°C·L 같은 10진수 단위이고, 미국·라이베리아·미얀마에서 주로 쓰는 "야드파운드법(Imperial System)"은 inch·ft·lb·°F 같은 단위를 사용합니다. 한국을 포함한 대부분의 국가가 1960년대 전후로 미터법을 공식 단위로 채택했지만, 미국은 여전히 야드파운드법을 일상적으로 사용합니다.</p>
+<p>미터법의 장점은 10의 배수로 단위가 구성되어 계산이 쉽다는 것입니다(1 km = 1,000 m = 100,000 cm). 반면 야드파운드법은 역사적 관습에서 비롯되어 12·16·3 같은 불규칙한 배수로 이루어져 있어(1 ft = 12 inch, 1 lb = 16 oz) 암산이 까다롭습니다. 해외직구·해외여행·영어 자료를 볼 때 이 계산기가 유용한 이유입니다.</p>
+
+<h2>해외직구 시 알아야 할 단위</h2>
+<p>해외직구를 자주 한다면 다음 단위들에 익숙해져야 합니다. 옷·신발 사이즈는 inch, 체중은 lb, 키는 ft/inch 조합(예: 5'10"), 온도는 °F, 가전의 크기는 inch(TV·모니터), 식품은 oz·fl oz로 표기되는 경우가 많습니다. 특히 TV·모니터 사이즈는 대각선 길이를 inch로 표기하므로, 55인치 TV는 약 139.7cm 대각선을 의미합니다.</p>
+<div class="guide-tip"><strong>팁:</strong> 미국 사이트에서 옷을 살 때 허리 32인치는 약 81cm입니다. 평소 28~30인치를 입는 한국인은 미국 기준 "Small" 또는 "28W"를 선택하면 대체로 맞습니다.</div>
+
+<h2>자주 쓰는 단위 변환 공식</h2>
+<table class="guide-table"><thead><tr><th>변환</th><th>공식</th><th>예시</th></tr></thead><tbody><tr><td>cm → inch</td><td>÷ 2.54</td><td>100cm = 39.37inch</td></tr><tr><td>inch → cm</td><td>× 2.54</td><td>10inch = 25.4cm</td></tr><tr><td>kg → lb</td><td>× 2.2046</td><td>70kg = 154.32lb</td></tr><tr><td>lb → kg</td><td>÷ 2.2046</td><td>150lb = 68.04kg</td></tr><tr><td>°C → °F</td><td>(°C×9/5)+32</td><td>20°C = 68°F</td></tr><tr><td>°F → °C</td><td>(°F−32)×5/9</td><td>100°F ≈ 37.78°C</td></tr><tr><td>mile → km</td><td>× 1.6093</td><td>60mph ≈ 96.56km/h</td></tr><tr><td>평 → m²</td><td>× 3.3058</td><td>30평 ≈ 99.17㎡</td></tr></tbody></table>
+
+<h2>섭씨와 화씨의 차이</h2>
+<p>온도 단위 중 가장 헷갈리는 것이 섭씨(°C)와 화씨(°F)입니다. 섭씨는 물이 어는 점을 0°, 끓는 점을 100°로 정한 10진법 체계이고, 화씨는 물이 어는 점이 32°, 끓는 점이 212°로 설정된 체계입니다. 미국 일기예보나 요리 온도가 화씨로 표기되므로 해외여행·해외 레시피 참고 시 변환이 필요합니다.</p>
+<p>일상적으로 자주 쓰는 기준을 외워두면 편리합니다. 체온 36.5°C는 97.7°F, 여름 더위 30°C는 86°F, 겨울 0°C는 32°F, 뜨거운 물 100°C는 212°F입니다. "화씨 기온 − 32 ÷ 2"로 대략적인 섭씨를 추정할 수 있습니다(예: 화씨 80 → 약 24°C).</p>
+
+<h2>이 단위 변환기 사용법</h2>
+<p>사용법은 매우 간단합니다. 상단 탭에서 변환하고 싶은 카테고리(길이·무게·온도·부피·넓이)를 선택하고, 숫자와 입력 단위를 고르면 같은 카테고리의 다른 모든 단위가 즉시 자동으로 표시됩니다. 입력 필드를 바꾸거나 단위 드롭다운을 변경하면 결과가 실시간으로 업데이트되므로 여러 단위를 한꺼번에 비교하기 편리합니다.</p>
+<p>결과는 소수점이 의미 있게 보이도록 자동 조정되며, 매우 작거나 매우 큰 값도 가독성 있게 표시됩니다. 모든 계산은 브라우저에서 즉시 처리되고 네트워크 연결 없이도 작동하므로, 오프라인에서도 사용할 수 있습니다. 개인정보를 수집하지 않으므로 안심하고 이용하세요.</p>
+</div></div>
+
+<div class="faq-section"><h2 class="section-title">자주 묻는 질문</h2>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>왜 미국만 야드파운드법을 쓰나요?</span><span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">역사적 관습과 산업·교육 체계 전환 비용 때문입니다. 미국도 1975년 미터법 전환을 공식 추진했지만, 도량형을 바꾸는 데 드는 산업·표준·교육 비용이 너무 커서 중단되었습니다. 과학·의학·군사 분야에서는 미국도 미터법을 사용하지만, 일상 생활·부동산·도로 표지판은 여전히 야드파운드법입니다. 현재 전 세계에서 미국·라이베리아·미얀마 3개국만 미터법을 공식 채택하지 않은 상태입니다.</div></div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>정확한 소수점까지 변환되나요?</span><span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">네, JavaScript의 고정밀 부동소수점 연산을 사용하며 표준 변환 상수(inch=0.0254m, lb=0.45359237kg 등)를 정확하게 적용합니다. 결과는 자동으로 유효숫자에 맞춰 표시되며, 매우 작은 값은 최대 6자리, 일반 값은 2자리까지 표시합니다.</div></div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>한국 "평"은 어떻게 계산하나요?</span><span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">1평 = 3.3058㎡(정확히는 400/121㎡)입니다. "평 → ㎡" 변환은 평에 3.3058을 곱하면 됩니다. 예를 들어 30평 아파트는 약 99.17㎡, 84㎡ 아파트는 약 25.4평(대략 25.7평으로 부동산에서 반올림 표기)입니다. 2007년 부동산 공식 표기는 ㎡로 변경되었지만 일상 대화에서는 여전히 평을 많이 사용합니다.</div></div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>요리 레시피의 컵(cup)은 몇 mL인가요?</span><span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">나라마다 다릅니다. 한국·일본의 "1컵"은 200mL, 미국 계량컵은 약 237mL, 국제 표준(메트릭 컵)은 250mL입니다. 이 계산기는 보편적으로 쓰이는 미국 컵(240mL)을 기준으로 합니다. 해외 레시피를 따를 때는 1 US cup = 240mL로 계산하면 대체로 안전하며, 정확도가 중요한 제빵의 경우 g 단위(무게)로 계량하는 것을 권장합니다.</div></div></div>
+</div>
+
+<section class="other-tools"><h2 class="section-title">다른 무료 도구</h2><div class="other-grid">
+<a href="https://jaewoo0317.github.io/exchange-rate/" class="other-card"><span class="other-icon">💱</span><div><div class="other-name">환율 계산기</div><div class="other-desc">달러·엔·유로 실시간 변환</div></div></a>
+<a href="https://jaewoo0317.github.io/percent-calculator/" class="other-card"><span class="other-icon">🔢</span><div><div class="other-name">퍼센트 계산기</div><div class="other-desc">할인율, 증감률, 비율 계산</div></div></a>
+<a href="https://jaewoo0317.github.io/date-calculator/" class="other-card"><span class="other-icon">📅</span><div><div class="other-name">날짜 계산기</div><div class="other-desc">D-Day, 일수 계산, 며칠 후/전</div></div></a>
+</div></section>
+
+<div class="ad-banner"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-dY7YmaHnk31ijIwa" data-ad-width="300" data-ad-height="250"></ins><script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script></div>
+</main>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-col"><a href="https://jaewoo0317.github.io/" class="footer-logo">J<span>WAY</span></a><p>매일 필요한 실용 도구를 무료로 제공합니다. 모든 계산은 브라우저에서 처리되며 개인정보를 수집하지 않습니다.</p></div><div class="footer-col"><a href="https://jaewoo0317.github.io/char-counter/">글자수 세기</a><a href="https://jaewoo0317.github.io/date-calculator/">날짜 계산기</a><a href="https://jaewoo0317.github.io/percent-calculator/">퍼센트 계산기</a><a href="https://jaewoo0317.github.io/salary-calculator/">연봉 실수령액</a><a href="https://jaewoo0317.github.io/bmi-calculator/">BMI 계산기</a><a href="https://jaewoo0317.github.io/exchange-rate/">환율 계산기</a><a href="https://jaewoo0317.github.io/unit-converter/">단위 변환기</a><a href="https://jaewoo0317.github.io/privacy-policy.html">개인정보처리방침</a></div></div><div class="footer-bottom">© 2025 JWAY. All rights reserved.</div></footer>
+
+<script>
+// Base unit per category. Value stored = value in base unit.
+const CATEGORIES={
+length:{base:'m',units:[['mm','mm (밀리미터)',0.001],['cm','cm (센티미터)',0.01],['m','m (미터)',1],['km','km (킬로미터)',1000],['inch','inch (인치)',0.0254],['ft','ft (피트)',0.3048],['yard','yard (야드)',0.9144],['mile','mile (마일)',1609.344]]},
+weight:{base:'kg',units:[['mg','mg (밀리그램)',0.000001],['g','g (그램)',0.001],['kg','kg (킬로그램)',1],['ton','ton (톤)',1000],['oz','oz (온스)',0.0283495],['lb','lb (파운드)',0.45359237]]},
+volume:{base:'L',units:[['mL','mL (밀리리터)',0.001],['L','L (리터)',1],['floz','fl oz (액량 온스)',0.0295735],['cup','cup (컵, 240mL)',0.24],['gallon','gallon (갤런, US)',3.78541]]},
+area:{base:'m2',units:[['m2','m² (제곱미터)',1],['km2','km² (제곱킬로미터)',1000000],['pyeong','평 (坪)',3.3058],['ft2','ft² (제곱피트)',0.092903],['acre','acre (에이커)',4046.86]]},
+temp:{base:'C',units:[['C','°C (섭씨)'],['F','°F (화씨)'],['K','K (켈빈)']]}
+};
+let currentCat='length';
+function switchCat(cat){currentCat=cat;document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));const sel=document.getElementById('fromUnit');sel.innerHTML='';const defaults={length:'m',weight:'kg',temp:'C',volume:'L',area:'m2'};CATEGORIES[cat].units.forEach(u=>{const opt=document.createElement('option');opt.value=u[0];opt.textContent=u[1];sel.appendChild(opt)});sel.value=defaults[cat];calc()}
+function tempToBase(v,unit){if(unit==='C')return v;if(unit==='F')return(v-32)*5/9;if(unit==='K')return v-273.15}
+function tempFromBase(cVal,unit){if(unit==='C')return cVal;if(unit==='F')return cVal*9/5+32;if(unit==='K')return cVal+273.15}
+function fmt(n){if(!isFinite(n))return '—';const abs=Math.abs(n);if(abs===0)return '0';if(abs>=1000000||abs<0.0001)return n.toExponential(4);if(abs>=100)return n.toLocaleString('ko-KR',{maximumFractionDigits:2});if(abs>=1)return n.toLocaleString('ko-KR',{maximumFractionDigits:4});return n.toLocaleString('ko-KR',{maximumFractionDigits:6})}
+function calc(){const val=parseFloat(document.getElementById('inputValue').value);const fromUnit=document.getElementById('fromUnit').value;const cat=CATEGORIES[currentCat];const grid=document.getElementById('resultGrid');if(isNaN(val)){grid.innerHTML='<div class="result-card"><div class="result-num">—</div></div>';return}let baseValue;if(currentCat==='temp'){baseValue=tempToBase(val,fromUnit)}else{const fromMul=cat.units.find(u=>u[0]===fromUnit)[2];baseValue=val*fromMul}grid.innerHTML='';cat.units.forEach(u=>{let result;if(currentCat==='temp'){result=tempFromBase(baseValue,u[0])}else{result=baseValue/u[2]}const card=document.createElement('div');card.className='result-card'+(u[0]===fromUnit?' highlight':'');card.innerHTML='<div class="result-unit">'+u[1]+'</div><div class="result-num">'+fmt(result)+'</div>';grid.appendChild(card)})}
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+document.getElementById('inputValue').addEventListener('input',calc);
+document.getElementById('fromUnit').addEventListener('change',calc);
+switchCat('length');
+</script></body></html>
