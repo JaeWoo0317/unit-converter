@@ -44,12 +44,6 @@ select{padding:14px 14px;border:1.5px solid var(--border);border-radius:var(--ra
 </head><body>
 <nav class="nav"><div class="nav-inner"><a href="https://jwaytools.com/" class="nav-logo">J<span>WAY</span></a><button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button><div class="nav-links"><a href="https://jwaytools.com/char-counter/">글자수</a><a href="https://jwaytools.com/date-calculator/">날짜</a><a href="https://jwaytools.com/percent-calculator/">퍼센트</a><a href="https://jwaytools.com/salary-calculator/">연봉</a><a href="https://jwaytools.com/bmi-calculator/">BMI</a><a href="https://jwaytools.com/exchange-rate/">환율</a><a href="https://jwaytools.com/unit-converter/">단위</a><a href="https://jwaytools.com/timer/">타이머</a><a href="https://jwaytools.com/qr-generator/">QR</a><a href="https://jwaytools.com/color-converter/">색상</a><a href="https://jwaytools.com/random-picker/">랜덤</a><a href="https://jwaytools.com/loan-calculator/">대출</a><a href="https://jwaytools.com/age-calculator/">만나이</a><a href="https://jwaytools.com/savings-calculator/">예적금</a><a href="https://jwaytools.com/income-tax-calculator/">소득세</a></div></div></nav>
 <header class="header"><h1>단위 <em>변환기</em></h1><p>길이·무게·온도·부피·넓이 단위를 한 번에 변환합니다. 해외직구·요리·공부·여행에 활용하세요.</p></header>
-<div class="tool-hero-illust" style="max-width:760px;margin:24px auto 0;padding:0 20px">
-<div style="border-radius:12px;overflow:hidden;background:var(--surface-alt);min-height:120px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border)">
-<img src="hero-illustration.png" alt="도구 일러스트" style="width:100%;height:auto;display:block;max-height:300px" loading="lazy" onerror="this.parentElement.innerHTML='<div style='padding:30px 20px;text-align:center;color:#9E9E9E;font-size:13px'>🎨 도구 일러스트 자리 (hero-illustration.png 업로드 시 자동 표시)</div>'">
-</div>
-</div>
-
 <main class="container">
 <div class="tabs">
 <button class="tab-btn active" data-cat="length" onclick="switchCat('length')">📏 길이</button>
@@ -81,6 +75,13 @@ select{padding:14px 14px;border:1.5px solid var(--border);border-radius:var(--ra
 
 <h2>자주 쓰는 단위 변환 공식</h2>
 <table class="guide-table"><thead><tr><th>변환</th><th>공식</th><th>예시</th></tr></thead><tbody><tr><td>cm → inch</td><td>÷ 2.54</td><td>100cm = 39.37inch</td></tr><tr><td>inch → cm</td><td>× 2.54</td><td>10inch = 25.4cm</td></tr><tr><td>kg → lb</td><td>× 2.2046</td><td>70kg = 154.32lb</td></tr><tr><td>lb → kg</td><td>÷ 2.2046</td><td>150lb = 68.04kg</td></tr><tr><td>°C → °F</td><td>(°C×9/5)+32</td><td>20°C = 68°F</td></tr><tr><td>°F → °C</td><td>(°F−32)×5/9</td><td>100°F ≈ 37.78°C</td></tr><tr><td>mile → km</td><td>× 1.6093</td><td>60mph ≈ 96.56km/h</td></tr><tr><td>평 → m²</td><td>× 3.3058</td><td>30평 ≈ 99.17㎡</td></tr></tbody></table>
+
+<h2>변환 상수와 공식 출처</h2>
+<p>이 도구는 국제적으로 통용되는 고정 변환값을 기준으로 계산합니다. 1 inch = 2.54 cm, 1 ft = 0.3048 m, 1 yd = 0.9144 m, 1 mile = 1.609344 km, 1 lb = 0.45359237 kg, 1 oz = 28.349523125 g 값을 사용합니다. 온도는 고정 배율이 아니라 °F = °C × 9/5 + 32, °C = (°F - 32) × 5/9 공식을 적용합니다.</p>
+<p>SI 단위와 국제 단위 체계의 기본 설명은 <a href="https://www.nist.gov/pml/owm/metric-si/si-units" target="_blank" rel="noopener">NIST SI Units 자료</a>를 참고할 수 있습니다. 부동산에서 쓰는 평은 법정 공식 표기 단위가 아니므로, 실제 계약서·등기·분양 자료에서는 제곱미터(㎡) 값을 우선 기준으로 확인하는 것이 안전합니다.</p>
+
+<h2>실제 예시 3가지</h2>
+<p>해외 쇼핑몰에서 허리 32 inch 바지를 보면 약 81.28 cm로 환산할 수 있습니다. 미국 레시피에 오븐 350°F라고 쓰여 있다면 약 176.67°C이므로 국내 오븐에서는 보통 175~180°C 근처로 맞춥니다. 84㎡ 아파트는 84 ÷ 3.3058 = 약 25.41평으로 볼 수 있지만, 광고 표기와 실제 전용·공급면적 기준이 다를 수 있으므로 면적 항목명을 함께 확인해야 합니다.</p>
 
 <h2>섭씨와 화씨의 차이</h2>
 <p>온도 단위 중 가장 헷갈리는 것이 섭씨(°C)와 화씨(°F)입니다. 섭씨는 물이 어는 점을 0°, 끓는 점을 100°로 정한 10진법 체계이고, 화씨는 물이 어는 점이 32°, 끓는 점이 212°로 설정된 체계입니다. 미국 일기예보나 요리 온도가 화씨로 표기되므로 해외여행·해외 레시피 참고 시 변환이 필요합니다.</p>
